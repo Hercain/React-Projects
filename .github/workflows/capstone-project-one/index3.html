@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+	<script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>FriendLy</title>
+</head>
+<body>
+<div id="app">React has not rendered yet.</div>
+
+<script type="text/babel">
+
+// FriendLy Complex Component
+
+//function FriendLy(props) {
+//var friendlyStyle = {
+//display:'inline-block',
+//margin:20,
+//height:300,
+//width: 200,
+//padding: 0,
+//backgroundColor: "#FFF",
+//WebkitFilter: "drop-shadow(0px 0px 5px #555)",
+//filter: "drop-shadow(0px 0px 5px #555)"
+//}
+//return(
+//<div style={friendlyStyle}>
+//	<Avatar img={props.img}/>
+//	<UserName username={props.username}/>
+//	<GetConnected/>
+//</div>
+//);
+//}
+
+function FriendLy(props) {
+var peopleItem = props.people.map(function(person) {
+var friendlyStyle = {
+display:'inline-block',
+margin:20,
+height:300,
+width: 200,
+padding: 0,
+backgroundColor: "#FFF",
+WebkitFilter: "drop-shadow(0px 0px 5px #555)",
+filter: "drop-shadow(0px 0px 5px #555)"
+}
+return <div style={friendlyStyle}>
+<Avatar img={person.img}/>
+<UserName name={person.name}/>
+<GetConnected/>
+</div>
+});
+return(
+<div>{peopleItem}</div>
+);
+}
+
+// Avatar Component
+function Avatar(props) {
+var avatarStyle = {
+marginLeft: 27,
+marginTop: 20,
+height: 150,
+width: 150,
+borderRadius: "50%"
+}
+return(
+<img src={props.img} alt="profile pic" style={avatarStyle}/>
+);
+}
+
+// UserName Component
+
+function UserName(props) {
+var nameStyle = {
+fontSize: 24,
+fontFamily: "Arial, Helvetica, sans-serif",
+textAlign: "center"
+}
+return(
+<h1 style={nameStyle}>{props.name}</h1>
+);
+}
+
+
+// GetConnected Complex Component
+function GetConnected() {
+var getConnectedStyle={
+marginLeft:15
+}
+return(
+<div style={getConnectedStyle}>
+	<Like/>
+	<Share/>
+	<Add/>
+</div>
+);
+}
+
+var iconStyle = {
+margin:20
+}
+	// Like
+function Like() {
+return(
+<i className="fa fa-thumbs-o-up" aria-hidden="true" style={iconStyle}></i>
+);
+}
+	// Share
+function Share() {
+return(
+<i className="fa fa-share" aria-hidden="true" style={iconStyle}></i>
+);
+}
+
+	// Add friend
+function Add() {
+return(
+<i className="fa fa-user-plus" aria-hidden="true" style={iconStyle}></i>
+);
+}
+
+var people = [{name: "Kevin", img: "https://github.com/Hercain/Portfolio-photos/blob/master/.github/workflows/image/profile.jpg?raw=true", female: false},
+{name: "Wiktoria", img: "https://scontent-ams4-1.xx.fbcdn.net/v/t1.0-9/67688112_2525208284191632_4445018283497750528_n.jpg?_nc_cat=110&_nc_sid=7aed08&_nc_ohc=6NDayw3y1AgAX8jRWHA&_nc_ht=scontent-ams4-1.xx&oh=9c361d6e0dcbd744c1c9bde21caf0a5e&oe=5ED741DB&dl=1", female: true},
+{name: "Dominika", img: "https://scontent-ams4-1.xx.fbcdn.net/v/t1.0-9/90677435_3142542899110686_6062813003680579584_n.jpg?_nc_cat=109&_nc_sid=85a577&_nc_ohc=bRveoHViF0cAX8aMwlO&_nc_ht=scontent-ams4-1.xx&oh=257093d3f179811070dcb22ba95644b6&oe=5ED96322&dl=1", female: true},
+{name: "Marzena", img: "https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/90178714_2064230747043149_3352346361075859456_n.jpg?_nc_cat=102&_nc_sid=7aed08&_nc_ohc=rLDmKzM0vfkAX-513wb&_nc_ht=scontent-amt2-1.xx&oh=2a08f97c06986eca57c64b2dfd94a599&oe=5ED976AA&dl=1", female: true},
+{name: "Jacek", img: "https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/62154279_1189965104518062_7063337150091100160_n.jpg?_nc_cat=101&_nc_sid=85a577&_nc_ohc=WIr7BHwicHAAX-NiFrQ&_nc_ht=scontent-amt2-1.xx&oh=c6e1e8e0f2df9f7524bdd79ac957d59a&oe=5ED92584&dl=1", female: false}]
+
+
+
+ReactDOM.render(
+<FriendLy
+people= {people}
+/>,
+document.getElementById("app")
+);
+
+</script>
+</body>
+</html>
